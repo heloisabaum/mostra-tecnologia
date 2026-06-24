@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tecnologia e Crianças</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: #e8f4ff;
+    text-align: center;
+    padding: 20px;
+}
+
+.container{
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px gray;
+}
+
+.pergunta{
+    text-align: left;
+    margin: 20px 0;
+}
+
+button{
+    background: #0077cc;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover{
+    background: #005fa3;
+}
+
+#resultado{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Como a Tecnologia Afeta Pessoas de 4 a 13 Anos</h1>
+
+<p>Responda às perguntas abaixo:</p>
+
+<div class="pergunta">
+<h3>1. Quanto tempo você usa a tecnologia por dia?</h3>
+
+<label><input type="radio" name="p1" value="1"> Uma hora ou menos</label><br>
+<label><input type="radio" name="p1" value="2"> De 1 a 2 horas por dia</label><br>
+<label><input type="radio" name="p1" value="3"> De 3 horas para mais</label>
+</div>
+
+<div class="pergunta">
+<h3>2. Você utiliza a tecnologia normalmente para:</h3>
+
+<label><input type="radio" name="p2" value="3"> Jogar</label><br>
+<label><input type="radio" name="p2" value="2"> Conversar no WhatsApp</label><br>
+<label><input type="radio" name="p2" value="1"> Estudar</label>
+</div>
+
+<div class="pergunta">
+<h3>3. Qual é a sua idade?</h3>
+
+<label><input type="radio" name="p3" value="3"> Menos de 2 anos</label><br>
+<label><input type="radio" name="p3" value="2"> De 3 a 17 anos</label><br>
+<label><input type="radio" name="p3" value="1"> 18 anos ou mais</label>
+</div>
+
+<button onclick="calcular()">Ver Resultado</button>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+function calcular(){
+
+let p1 = document.querySelector('input[name="p1"]:checked');
+let p2 = document.querySelector('input[name="p2"]:checked');
+let p3 = document.querySelector('input[name="p3"]:checked');
+
+if(!p1 || !p2 || !p3){
+    document.getElementById("resultado").innerHTML =
+    "⚠️ Responda todas as perguntas!";
+    return;
+}
+
+let total =
+parseInt(p1.value) +
+parseInt(p2.value) +
+parseInt(p3.value);
+
+if(total <= 4){
+    document.getElementById("resultado").innerHTML =
+    "✅ Uso ADEQUADO da tecnologia.";
+}
+else if(total <= 6){
+    document.getElementById("resultado").innerHTML =
+    "⚠️ Uso RAZOÁVEL da tecnologia. Procure equilibrar o tempo de tela com outras atividades.";
+}
+else{
+    document.getElementById("resultado").innerHTML =
+    "❌ Uso EXCESSIVO da tecnologia. É importante reduzir o tempo de tela e praticar outras atividades.";
+}
+}
+</script>
+
+</body>
+</html>
